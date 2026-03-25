@@ -14,6 +14,7 @@ RUN apk --no-cache add \
     cmake \
     ninja \
     git \
+    npm \
     avrdude \
     avr-libc \
     gcc-avr
