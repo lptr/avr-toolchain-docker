@@ -12,6 +12,7 @@ RUN apk --no-cache add \
     wget \
     make \
     cmake \
+    ninja \
     git \
     avrdude \
     avr-libc \
