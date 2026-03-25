@@ -1,0 +1,28 @@
+name: Build and push avr-toolchains Docker image
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    name: Build and push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v4
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build image
+        run: |
+          docker build \
+            -t ${{ github.repository_owner }}/avr-toolchain:latest \
+            .
+
+      - name: Push image
+        run: |
+          docker push ${{ github.repository_owner }}/avr-toolchain:latest
